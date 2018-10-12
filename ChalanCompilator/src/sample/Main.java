@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.controllers.Splash;
 
 public class Main extends Application {
 public static int duracion=110000;
@@ -22,7 +23,7 @@ public static int steps= 1;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Principal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("views/Principal.fxml"));
         primaryStage.setTitle("Chalan Compilator");
         primaryStage.setScene(new Scene(root, 1200, 600));
         primaryStage.show();
