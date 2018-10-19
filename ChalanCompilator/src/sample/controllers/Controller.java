@@ -27,7 +27,7 @@ import static sample.Constants.Configs.sampleCode;
 public class Controller extends Application {
 
     private Stage stage;
-    @FXML public Pane paneSote;
+    @FXML public HBox paneSote;
     @FXML TextArea txtConsola;
 
 
@@ -35,7 +35,7 @@ public class Controller extends Application {
     @FXML protected void initialize (){
         codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
         codeArea.replaceText(0,0,sampleCode);
-        codeArea.setPrefSize(1200,330);
+        codeArea.setPrefSize(paneSote.getPrefWidth()+10,paneSote.getPrefHeight()+10);
         HBox.setHgrow(codeArea, Priority.ALWAYS);
     Subscription cleanupWhenNoLongerNeedIt = codeArea
             .multiPlainChanges()
@@ -69,7 +69,7 @@ public class Controller extends Application {
         String [] renglones= texto.split("\\n");
         for (int x=0; x<renglones.length;x++){
             boolean bandera =false;
-            if(!renglones[x].equals("")){
+            if(!renglones[x].trim().equals("")){
                 for(int y=0; y<Configs.EXPRESIONES.length && bandera==false;y++){
                 Pattern patron =  Pattern.compile(Configs.EXPRESIONES[y]);
                 Matcher matcher= patron.matcher(renglones[x]);
@@ -77,10 +77,11 @@ public class Controller extends Application {
                     bandera =true;
                 }
             }//llave for y
+                if (bandera==false){
+                    txtConsola.setText(txtConsola.getText()+"\n"+"Error de sintaxis en la linea"+(x+1));
+                }
                  }// llave IF, FOr X
-            if (bandera==false){
-                txtConsola.setText(txtConsola.getText()+"\n"+"Error de sintaxis en la linea"+(x+1));
-            }
+
         }//llave for x
         long tFinal= System.currentTimeMillis()-tInicial;
         txtConsola.setText(txtConsola.getText()+"\n"+"Compilado en : "+tFinal+" milisegundos.");

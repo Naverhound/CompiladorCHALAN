@@ -12,12 +12,12 @@ public final class Configs {
 
     public static final String[] KEYWORDS = new String[] {
           "CREAR","TRAER","GENERAR","FIJO","PRIVADO","INT","STRING","DOUBLE",
-            "PROCEDIMIENTO","ARREGLO", "NUEVO"
+            "PROCEDIMIENTO","ARREGLO", "NUEVO","PRINCIPAL"
     };
 
     public static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
     public static final String PAREN_PATTERN = "\\(|\\)";
-    public static final String BRACE_PATTERN = "\\{|\\}";
+    public static final String BRACE_PATTERN = "\\{|\\}|:";
     public static final String BRACKET_PATTERN = "\\[|\\]";
     public static final String SEMICOLON_PATTERN = "\\;";
     public static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
@@ -34,9 +34,9 @@ public final class Configs {
     );
 
     public static final String sampleCode = String.join("\n", new String[] {
-            "package com.example;",
             "",
-            "import java.util.*;",
+            "",
+            "CREAR PROCEDIMIENTO PRINCIPAL:HOLA;",
             "",
             "public class Foo extends Bar implements Baz {",
             "",
@@ -78,7 +78,7 @@ public final class Configs {
         return spansBuilder.create();
     }
     public static String [] EXPRESIONES={
-        "[A-Za-z]{1,3}",
-         "[0-10]{2}"
+        "CREAR PROCEDIMIENTO PRINCIPAL:(\\s)?\\w;", "CREAR PROCEDIMIENTO [A-z]+(\\d+)?:\\w+;","STRING \\w+","DOUBLE \\w+","INT \\w+","ARREGLO \\w+ x[1,2,3,4,5,6,7,8,9]",
+
     };
 }

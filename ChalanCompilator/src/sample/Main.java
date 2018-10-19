@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import sample.controllers.Splash;
 
 public class Main extends Application {
-public static int duracion=110000;
+public static int duracion=11000;
 public static int steps= 1;
 
     @Override
