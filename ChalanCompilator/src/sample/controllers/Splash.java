@@ -5,8 +5,10 @@ import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
@@ -44,7 +46,8 @@ public class Splash extends Preloader{
                 Parent root2;
                 try {
                     root2= FXMLLoader.load(getClass().getResource("../views/Splash.fxml"));
-                    scene= new Scene (root2,400,400);
+                    scene= new Scene (root2,712,400);
+
                 }catch(IOException e){
                     e.printStackTrace();
                 }

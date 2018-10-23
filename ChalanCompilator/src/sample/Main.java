@@ -6,10 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.controllers.Splash;
 
 public class Main extends Application {
-public static int duracion=11000;
+public static int duracion=150000;
 public static int steps= 1;
 
     @Override
@@ -33,5 +34,6 @@ public static int steps= 1;
     public static void main(String[] args) {
         //launch(args);
         LauncherImpl.launchApplication(Main.class,Splash.class,args);
+
     }
 }
