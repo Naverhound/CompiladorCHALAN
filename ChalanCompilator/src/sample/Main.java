@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 import sample.controllers.Splash;
 
 public class Main extends Application {
-public static int duracion=150000;
+public static int duracion=10000;
 public static int steps= 1;
 
     @Override

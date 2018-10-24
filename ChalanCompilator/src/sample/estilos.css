@@ -45,11 +45,11 @@
     -fx-font-weight: bold;
 }
 .string {
-    -fx-fill: blue;
+    -fx-fill: grey;
 }
 
 .comment {
-	-fx-fill: cadetblue;
+	-fx-fill: yellow;
 }
 
 .paragraph-box:has-caret {
@@ -57,6 +57,7 @@
 }
 .styled-text-area{
 -fx-background-color: #2C2727;
+
 }
 .styled-text-area .lineno{
     -fx-background-color: #3E3939;

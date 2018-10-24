@@ -12,12 +12,12 @@ public final class Configs {
 
     public static final String[] KEYWORDS = new String[] {
           "CREAR","TRAER","GENERAR","FIJO","PRIVADO","INT","STRING","DOUBLE",
-            "PROCEDIMIENTO","ARREGLO", "NUEVO","PRINCIPAL"
+            "PROCEDIMIENTO","ARREGLO", "NUEVO","PRINCIPAL","SI","SINO"
     };
 
     public static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
     public static final String PAREN_PATTERN = "\\(|\\)";
-    public static final String BRACE_PATTERN = "\\{|\\}|:";
+    public static final String BRACE_PATTERN = "\\{|\\}|:|;";
     public static final String BRACKET_PATTERN = "\\[|\\]";
     public static final String SEMICOLON_PATTERN = "\\;";
     public static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
@@ -38,7 +38,7 @@ public final class Configs {
             "",
             "CREAR PROCEDIMIENTO PRINCIPAL:HOLA;",
             "",
-            "public class Foo extends Bar implements Baz {",
+            "CREAR PROCEDIMIENTO Foo :",
             "",
             "    /*",
             "     * multi-line comment",
@@ -46,9 +46,9 @@ public final class Configs {
             "    public static void main(String[] args) {",
             "        // single-line comment",
             "        for(String arg: args) {",
-            "            if(arg.length() != 0)",
+            "            SI(arg.length() != 0)",
             "                System.out.println(arg);",
-            "            else",
+            "            SINO",
             "                System.err.println(\"Warning: empty string as argument\");",
             "        }",
             "    }",
