@@ -11,8 +11,11 @@ import java.util.regex.Pattern;
 public final class Configs {
 
     public static final String[] KEYWORDS = new String[] {
-          "CREAR","TRAER","GENERAR","FIJO","PRIVADO","INT","STRING","DOUBLE",
-            "PROCEDIMIENTO","ARREGLO", "NUEVO","PRINCIPAL","SI","SINO"
+            "CREAR","TRAER","GENERAR","FIJO","PRIVADO","INT","STRING","DOUBLE",
+            "PROCEDIMIENTO","ARREGLO", "NUEVO","PRINCIPAL","SI","SINO","HASTA"
+    };
+    public static final String[] FUNCIONES = new String[] {
+            "POTENCIA","RAIZ","PI"
     };
 
     public static final String KEYWORD_PATTERN = "\\b(" + String.join("|", KEYWORDS) + ")\\b";
@@ -22,6 +25,9 @@ public final class Configs {
     public static final String SEMICOLON_PATTERN = "\\;";
     public static final String STRING_PATTERN = "\"([^\"\\\\]|\\\\.)*\"";
     public static final String COMMENT_PATTERN = "//[^\n]*" + "|" + "/\\*(.|\\R)*?\\*/";
+    public static final String NORMAL_PATTERN="(\\w+|\\.|[^"+String.join("|",FUNCIONES)+"])";
+    public static final String SIMBOL_PATTERN="([+,\\-,=,/,*,!,<,>])";
+    public static final String FUNCIONES_PATTERN="\\b(" + String.join("|", FUNCIONES) + ")\\b";
 
     public static final Pattern PATTERN = Pattern.compile(
             "(?<KEYWORD>" + KEYWORD_PATTERN + ")"
@@ -31,9 +37,13 @@ public final class Configs {
                     + "|(?<SEMICOLON>" + SEMICOLON_PATTERN + ")"
                     + "|(?<STRING>" + STRING_PATTERN + ")"
                     + "|(?<COMMENT>" + COMMENT_PATTERN + ")"
+                    + "|(?<NORMAL>" + NORMAL_PATTERN + ")"
+                    +"|(?<SIMBOL>" + SIMBOL_PATTERN + ")"
+                    +"|(?<FUNCIONES>"+ FUNCIONES_PATTERN+")"
     );
 
     public static final String sampleCode = String.join("\n", new String[] {
+
             "",
             "",
             "CREAR PROCEDIMIENTO PRINCIPAL:HOLA;",
@@ -45,10 +55,10 @@ public final class Configs {
             "     */",
             "    public static void main(String[] args) {",
             "        // single-line comment",
-            "        for(String arg: args) {",
-            "            SI(arg.length() != 0)",
+            "        HASTA (INT LIM-LIM< OTROLIM-LIM+2): PROCESO; ",
+            "            {  SI(arg.length() != 0)",
             "                System.out.println(arg);",
-            "            SINO",
+            "            SINO:",
             "                System.err.println(\"Warning: empty string as argument\");",
             "        }",
             "    }",
@@ -68,6 +78,9 @@ public final class Configs {
                                             matcher.group("BRACKET") != null ? "bracket" :
                                                     matcher.group("SEMICOLON") != null ? "semicolon" :
                                                             matcher.group("STRING") != null ? "string" :
+                                                                    matcher.group("NORMAL")!=null ? "normal":
+                                                                            matcher.group("SIMBOL")!=null ? "simbol":
+                                                                                    matcher.group("FUNCIONES")!=null ? "funciones":
                                                                     matcher.group("COMMENT") != null ? "comment" :
                                                                             null; /* never happens */ assert styleClass != null;
             spansBuilder.add(Collections.emptyList(), matcher.start() - lastKwEnd);
@@ -78,7 +91,9 @@ public final class Configs {
         return spansBuilder.create();
     }
     public static String [] EXPRESIONES={
-        "CREAR PROCEDIMIENTO PRINCIPAL:(\\s)?\\w;", "CREAR PROCEDIMIENTO [A-z]+(\\d+)?:\\w+;","STRING \\w+","DOUBLE \\w+","INT \\w+","ARREGLO \\w+ x[1,2,3,4,5,6,7,8,9]",
+        "(\\s+)?CREAR(\\s+)?PROCEDIMIENTO(\\s+)?PRINCIPAL(\\s+)?:(\\s+)?(\\\n+)?\\w+(\\\n+)?(\\s+)?(;(\\s+)?)$", "(\\s+)?CREAR(\\s+)?PROCEDIMIENTO(\\s+)?[A-z]+(\\d+)?(\\s+)?:(\\s+)?(\\\n+)?\\w+(\\\n+)?(\\s+)?(;(\\s+)?)$",
+            "(\\s+)?HASTA(\\s+)?\\(INT [A-z]+(\\d+)?(\\s+)?\\-(\\s+)?[A-z]+(\\d+)?(\\s+)?<(\\s+)?[A-z]+(\\d+)?(\\s+)?\\-(\\s+)?[A-z]+(\\d+)?(\\s+)?\\+\\d+(\\s+)?\\)(\\s+)?:(\\s+)?(\\\n+)?\\w+(\\\n+)?(\\s+)?(;(\\s+)?)$",
+            "(\\s+)?STRING [A-z]+(\\d+)?","(\\s+)?DOUBLE [A-z]+(\\d+)?","INT [A-z]+(\\d+)?","(\\s+)?ARREGLO [A-z]+(\\d+)? x[1,2,3,4,5,6,7,8,9](\\s+)?",
 
     };
 }
