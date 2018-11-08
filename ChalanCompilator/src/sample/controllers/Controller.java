@@ -16,7 +16,7 @@ import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
 import sample.Constants.Configs;
 
-import java.io.File;
+import java.io.*;
 import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -50,6 +50,23 @@ public class Controller extends Application {
         FileChooser.ExtensionFilter filtro= new FileChooser.ExtensionFilter("Archivos .ccf","*.ccf");
         of.getExtensionFilters().add(filtro);
         File file = of.showOpenDialog(stage);
+
+        if (file !=null){
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String todo=""; String aux="";
+                while((aux=br.readLine())!=null){
+                    todo+=aux+"\n";
+                }
+                int c=codeArea.getText().length();
+                codeArea.replaceText(0,c,todo );
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
