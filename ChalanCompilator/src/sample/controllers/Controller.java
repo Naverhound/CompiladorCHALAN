@@ -16,7 +16,7 @@ import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
 import sample.Constants.Configs;
 
-import java.io.File;
+import java.io.*;
 import java.time.Duration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,11 +45,27 @@ public class Controller extends Application {
     }//LLave del LOADDD
     public void evtSalir (ActionEvent event){ System.exit(0); }
     public void evtAbrir (ActionEvent event){
-        FileChooser of= new FileChooser();
+        FileChooser of=new FileChooser();
         of.setTitle("Abrir archivo ccf");
         FileChooser.ExtensionFilter filtro= new FileChooser.ExtensionFilter("Archivos .ccf","*.ccf");
         of.getExtensionFilters().add(filtro);
-        File file = of.showOpenDialog(stage);
+        File file=of.showOpenDialog(stage);
+        if(file != null){
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String todo="",aux="";
+
+                while((aux=br.readLine())!=null){
+                    todo+=aux+"\n";
+                }
+                int c=codeArea.getText().length();
+                codeArea.replaceText(0,c,todo);
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -86,4 +102,5 @@ public class Controller extends Application {
         long tFinal= System.currentTimeMillis()-tInicial;
         txtConsola.setText(txtConsola.getText()+"\n"+"Compilado en : "+tFinal+" milisegundos.");
     }//llave Compilar
+
 }
