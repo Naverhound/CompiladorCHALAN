@@ -8,7 +8,7 @@ public class Interprete {
     TextArea txtConsola;
 
     public Interprete(String renglones, TextArea con) {
-        this.txtConsola = con;System.out.println("ENTRO"+ renglones+"p");
+        this.txtConsola = con;
         compilar(renglones);
 
     }
@@ -23,10 +23,10 @@ public class Interprete {
                 this.txtConsola.setText(txtConsola.getText()+"\n"+texto);
             }
 
-            if(r[x].contains("STRING")||r[x].contains("INT")||r[x].contains("DOUBLE")||r[x].contains("BOOLEAN")){
-                String[] td = r[x].split(" ");   System.out.println("ENTRO"+ r[x]+"p");
+            if((r[x].contains("STRING"))||(r[x].contains("INT"))||(r[x].contains("DOUBLE"))||(r[x].contains("BOOLEAN"))){
+                String[] td = r[x].split(" ");
+            
                 if (td[0].trim().equals(TipoToken.STRING)) {
-
                     Token token = new Token(TipoToken.STRING, "", td[1].trim());
                     if (ifExist(token)) {
                         txtConsola.appendText("\n" + " La variable " + td[1] + " ya existe");
