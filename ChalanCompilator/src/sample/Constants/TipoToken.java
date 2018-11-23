@@ -1,6 +1,7 @@
 package sample.Constants;
 
-import jdk.nashorn.internal.parser.Token;
+
+import sample.Logica.Token;
 
 import java.util.ArrayList;
 

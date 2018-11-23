@@ -15,6 +15,7 @@ import org.fxmisc.richtext.LineNumberFactory;
 
 import org.reactfx.Subscription;
 import sample.Constants.Configs;
+import sample.Constants.TipoToken;
 
 import java.io.*;
 import java.time.Duration;
@@ -81,6 +82,7 @@ public class Controller extends Application {
         long tInicial= System.currentTimeMillis();
 
         txtConsola.setText("");
+        TipoToken.Variables.clear();
         String texto= codeArea.getText();
         String [] renglones= texto.split("\\n");
         for (int x=0; x<renglones.length;x++){

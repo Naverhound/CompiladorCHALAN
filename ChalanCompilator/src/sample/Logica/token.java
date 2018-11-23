@@ -1,11 +1,11 @@
 package sample.Logica;
 
-public class token {
+public class Token {
     private String type;
     private String value;
     private String name;
 
-    public token(String type, String value, String name) {
+    public Token(String type, String value, String name) {
         this.type = type;
         this.value = value;
         this.name = name;
