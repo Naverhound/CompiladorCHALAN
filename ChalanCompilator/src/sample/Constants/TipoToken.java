@@ -11,6 +11,8 @@ public final class TipoToken {
     public static  final String MOSTRAR="SHOW";
     public static  final String STRING="STRING";
     public static  final String INT="ENTERO";
+    public static  final String DOUBLE="DECIMAL";
+    public static  final String BOOLEAN="TF";
     public static  final String FOR="FOR";
     public static  final String WHILE="WHILE";
     public static  final String MAS="PLUS";

@@ -16,6 +16,7 @@ import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
 import sample.Constants.Configs;
 import sample.Constants.TipoToken;
+import sample.Logica.Interprete;
 
 import java.io.*;
 import java.time.Duration;
@@ -85,6 +86,7 @@ public class Controller extends Application {
         TipoToken.Variables.clear();
         String texto= codeArea.getText();
         String [] renglones= texto.split("\\n");
+        boolean correcto=true;
         for (int x=0; x<renglones.length;x++){
             boolean bandera =false;
             if(!renglones[x].trim().equals("")){
@@ -97,10 +99,14 @@ public class Controller extends Application {
             }//llave for y
                 if (bandera==false){
                     txtConsola.setText(txtConsola.getText()+"\n"+"Error de sintaxis en la linea"+(x+1));
+                    correcto=false;
                 }
                  }// llave IF, FOr X
 
         }//llave for x
+        if(correcto){
+            Interprete interprete=new Interprete(texto,txtConsola);
+        }
         long tFinal= System.currentTimeMillis()-tInicial;
         txtConsola.setText(txtConsola.getText()+"\n"+"Compilado en : "+tFinal+" milisegundos.");
     }//llave Compilar
