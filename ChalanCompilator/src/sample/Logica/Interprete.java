@@ -1,6 +1,5 @@
 package sample.Logica;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.scene.control.TextArea;
 import sample.Constants.TipoToken;
 
@@ -30,6 +29,10 @@ public class Interprete {
                     Token token = new Token(TipoToken.STRING, "", td[1].trim());
                     if (ifExist(token)) {
                         txtConsola.appendText("\n" + " La variable " + td[1] + " ya existe");
+                        if(r[x].contains("=")) {
+                        int posigual=r[x].indexOf("=");
+
+                        }
                     } else {
                         TipoToken.Variables.add(token);
                     }
@@ -57,6 +60,20 @@ public class Interprete {
                     } else {
                         TipoToken.Variables.add(token);
                     }
+                }else if (td[0].trim().equals(TipoToken.MOSTRAR)){
+                    System.out.println("ENTRO");
+                    Token token = new Token(TipoToken.MOSTRAR,"", td[1].trim());
+                    if(ifExist(token)){
+                        txtConsola.appendText("\n"+" La variable " + td[1] + " ya existe");
+                    }else {
+                        TipoToken.Variables.add(token);
+                    }
+
+                } else if(td[0].trim().equals(TipoToken.MULTIPLICAR)){
+                    System.out.println("ENTRO");
+                    Token token = new Token(TipoToken.MULTIPLICAR,"",td[1].trim());
+
+
                 }
             }//lave for
         }

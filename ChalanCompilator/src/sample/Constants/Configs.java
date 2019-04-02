@@ -12,7 +12,8 @@ public final class Configs {
 
     public static final String[] KEYWORDS = new String[] {
             "CREAR","TRAER","GENERAR","FIJO","PRIVADO","INT","STRING","DOUBLE",
-            "PROCEDIMIENTO","ARREGLO", "NUEVO","PRINCIPAL","SI","SINO","HASTA"
+            "PROCEDIMIENTO","ARREGLO", "NUEVO","PRINCIPAL","SI","SINO","HASTA","MULTIPLICAR","RESTAR",
+            "DIVIDIR"
     };
     public static final String[] FUNCIONES = new String[] {
             "POTENCIA","RAIZ","PI"
@@ -93,7 +94,8 @@ public final class Configs {
     public static String [] EXPRESIONES={
         "(\\s+)?CREAR(\\s+)?PROCEDIMIENTO(\\s+)?PRINCIPAL(\\s+)?:(\\s+)?(\\\n+)?\\w+(\\\n+)?(\\s+)?(;(\\s+)?)$", "(\\s+)?CREAR(\\s+)?PROCEDIMIENTO(\\s+)?[A-z]+(\\d+)?(\\s+)?:(\\s+)?(\\\n+)?\\w+(\\\n+)?(\\s+)?(;(\\s+)?)$",
             "(\\s+)?HASTA(\\s+)?\\(INT [A-z]+(\\d+)?(\\s+)?\\-(\\s+)?[A-z]+(\\d+)?(\\s+)?<(\\s+)?[A-z]+(\\d+)?(\\s+)?\\-(\\s+)?[A-z]+(\\d+)?(\\s+)?\\+\\d+(\\s+)?\\)(\\s+)?:(\\s+)?(\\\n+)?\\w+(\\\n+)?(\\s+)?(;(\\s+)?)$",
-            "(\\s+)?STRING [A-z]+(\\d+)?","(\\s+)?DOUBLE [A-z]+(\\d+)?","INT [A-z]+(\\d+)?","(\\s+)?ARREGLO [A-z]+(\\d+)? x[1,2,3,4,5,6,7,8,9](\\s+)?",
+            "(\\s+)?STRING [A-z]+(\\d+)?","(\\s+)?DOUBLE [A-z]+(\\d+)?","INT [A-z]+(\\d+)?","(\\s+)?ARREGLO [A-z]+(\\d+)? x[1,2,3,4,5,6,7,8,9](\\s+)?","(\\s+)?[A-z]+([0-9]+)?(\\s)+MULTIPLICAR(\\s)+[A-z]+([0-9]+)?(;(\\s+)?)$",
+            "(\\s+)?[A-z]+([0-9]+)?(\\s)+RESTAR(\\s)+[A-z]+([0-9]+)?(;(\\s+)?)$","(\\s+)?[A-z]+([0-9]+)?(\\s)+DIVIDIR(\\s)+[A-z]+([0-9]+)?(;(\\s+)?)$","(\\s+)?INT(\\s+)?[A-z]+([0-9]+)?(\\s+)?=(\\s+)?[0-9]+(\\s+)?;"
 
 
     };
